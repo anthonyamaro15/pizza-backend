@@ -1,5 +1,6 @@
 const express = require("express");
 const Menu = require("../models/menuModel");
+const { valMenuId } = require("../middlewares/validations");
 
 const route = express.Router();
 
@@ -17,7 +18,8 @@ route.get("/get_menu", (req, res) => {
     .catch((err) => res.status(500).json({ errorMessage: err.message }));
 });
 
-route.patch("/edit/:id", (req, res) => {
+route.patch("/edit/:id", valMenuId, (req, res) => {
+  // menu id
   const { id } = req.params;
   const changes = req.body;
 
@@ -26,7 +28,8 @@ route.patch("/edit/:id", (req, res) => {
     .catch((err) => res.status(500).json({ errorMessage: err.message }));
 });
 
-route.delete("/delete/:id", (req, res) => {
+route.delete("/delete/:id", valMenuId, (req, res) => {
+  // menu id
   const { id } = req.params;
 
   Menu.remove(id)
