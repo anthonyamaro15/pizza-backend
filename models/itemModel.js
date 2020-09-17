@@ -4,6 +4,10 @@ function add(client) {
   return db("items").insert(client, "id");
 }
 
+function getItemsInCart(id) {
+  return db("items").where("items.user_id", id);
+}
+
 function getBy(filter) {
   return db("items").where(filter);
 }
@@ -22,6 +26,7 @@ function remove(id) {
 
 module.exports = {
   add,
+  getItemsInCart,
   getBy,
   getById,
   update,
