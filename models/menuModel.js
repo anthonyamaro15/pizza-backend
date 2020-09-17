@@ -1,7 +1,12 @@
 const db = require("../data/config-data");
 
-function add(item) {
-  return db("menu").insert(item, "id");
+async function add(item) {
+  const [id] = await db("menu").insert(item, "id");
+  return getById(id);
+}
+
+function getAll() {
+  return db("menu");
 }
 
 function getBy(filter) {
@@ -22,6 +27,7 @@ function remove(id) {
 
 module.exports = {
   add,
+  getAll,
   getBy,
   getById,
   update,

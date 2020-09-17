@@ -19,6 +19,8 @@ exports.up = function (knex) {
       table.string("peppers", 255);
       table.string("img_url", 255);
       table.string("category", 255);
+      table.string("category_name", 255);
+
       table
         .integer("user_id")
         .notNullable()

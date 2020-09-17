@@ -14,6 +14,7 @@ exports.seed = function (knex) {
       peppers: "all",
       img_url: "imageurlsfsfsffsfsfsf",
       category: "pizzas",
+      category_name: "pizza",
       user_id: 1,
     },
     {
@@ -29,6 +30,7 @@ exports.seed = function (knex) {
       peppers: "all",
       img_url: "imageurlsfsfsffsfsfsf",
       category: "thin crust pizza",
+      category_name: "pizza",
       user_id: 1,
     },
     {
@@ -44,6 +46,7 @@ exports.seed = function (knex) {
       peppers: "all",
       img_url: "imageurlsfsfsffsfsfsf",
       category: "best",
+      category_name: "pizza",
       user_id: 2,
     },
     {
@@ -59,6 +62,7 @@ exports.seed = function (knex) {
       peppers: "all",
       img_url: "imageurlsfsfsffsfsfsf",
       category: "pizzas",
+      category_name: "pizza",
       user_id: 2,
     },
   ]);
