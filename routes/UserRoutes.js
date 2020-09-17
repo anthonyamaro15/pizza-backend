@@ -1,12 +1,13 @@
 const express = require("express");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const { valClientBody } = require("../middlewares/validations");
 
 const Clients = require("../models/clientModel");
 
 const route = express.Router();
 
-route.post("/register", (req, res) => {
+route.post("/register", valClientBody, (req, res) => {
   const credentials = req.body;
   const { email } = req.body;
 
@@ -27,7 +28,7 @@ route.post("/register", (req, res) => {
   });
 });
 
-route.post("/login", (req, res) => {
+route.post("/login", valClientBody, (req, res) => {
   const { email, password } = req.body;
 
   Clients.getBy({ email })
