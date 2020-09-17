@@ -13,7 +13,8 @@ exports.seed = function (knex) {
       cheese: "american",
       peppers: "all",
       img_url: "imageurlsfsfsffsfsfsf",
-      category: "pizzas",
+      category: "deep dish pizza",
+      category_name: "pizza",
     },
     {
       name: "dish cheese",
@@ -28,6 +29,7 @@ exports.seed = function (knex) {
       peppers: "all",
       img_url: "imageurlsfsfsffsfsfsf",
       category: "thin crust pizza",
+      category_name: "pizza",
     },
     {
       name: "hawaiian",
@@ -41,7 +43,8 @@ exports.seed = function (knex) {
       cheese: "american",
       peppers: "all",
       img_url: "imageurlsfsfsffsfsfsf",
-      category: "best",
+      category: "speciality pizza",
+      category_name: "pizza",
     },
     {
       name: "pizza",
@@ -55,7 +58,23 @@ exports.seed = function (knex) {
       cheese: "american",
       peppers: "all",
       img_url: "imageurlsfsfsffsfsfsf",
-      category: "pizzas",
+      category: "frozen pizzas",
+      category_name: "pizza",
+    },
+    {
+      name: "pizza",
+      size_price: "23",
+      price: 2,
+      quantity: 1,
+      description: "this is the best pizza",
+      sauce: "tomate",
+      dressing: "ranch",
+      side: "coke",
+      cheese: "american",
+      peppers: "all",
+      img_url: "imageurlsfsfsffsfsfsf",
+      category: "popular combos",
+      category_name: "pizza",
     },
   ]);
 };
