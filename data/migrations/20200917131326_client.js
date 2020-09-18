@@ -4,6 +4,7 @@ exports.up = function (knex) {
       table.increments();
       table.string("email", 255).unique().notNullable();
       table.string("password", 255).notNullable();
+      table.string("reset_link", 255);
     })
     .createTable("items", (table) => {
       table.increments();
