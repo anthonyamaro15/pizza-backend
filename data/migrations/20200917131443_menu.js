@@ -3,8 +3,6 @@ exports.up = function (knex) {
     table.increments();
     table.string("name", 255);
     table.string("size_price", 255);
-    table.float("price");
-    table.integer("quantity");
     table.string("description", 255);
     table.string("sauce", 255);
     table.string("dressing", 255);
