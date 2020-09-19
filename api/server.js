@@ -14,7 +14,7 @@ server.use(cors());
 server.use(helmet());
 
 server.use("/api", clientRoutes);
-server.use("/api/menu", restrictedRoute, menuRoutes);
+server.use("/api/menu", menuRoutes);
 server.use("/api/cart", userCartRoutes);
 
 module.exports = server;

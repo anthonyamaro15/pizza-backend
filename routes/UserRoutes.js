@@ -11,10 +11,12 @@ route.post("/register", valClientBody, (req, res) => {
   const credentials = req.body;
   const { email } = req.body;
 
+  // check if email already exist
   Clients.getBy({ email }).then((client) => {
     if (client.length) {
       res.status(500).json({ errorMessage: "Email already taken" });
     } else {
+      // otherwise hash password
       const hash = bcrypt.hashSync(
         credentials.password,
         Number(process.env.ROUNDS)
@@ -31,9 +33,11 @@ route.post("/register", valClientBody, (req, res) => {
 route.post("/login", valClientBody, (req, res) => {
   const { email, password } = req.body;
 
+  // validate client password
   Clients.getBy({ email })
     .then(([client]) => {
       if (client && bcrypt.compareSync(password, client.password)) {
+        // if password matches then create token
         const token = generateToken(client);
         res.status(200).json({ id: client.id, token });
       } else {

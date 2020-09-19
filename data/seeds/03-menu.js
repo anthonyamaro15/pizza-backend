@@ -4,8 +4,7 @@ exports.seed = function (knex) {
     {
       name: "pizza",
       size_price: "23",
-      price: 2,
-      quantity: 1,
+
       description: "this is the best pizza",
       sauce: "tomate",
       dressing: "ranch",
@@ -19,8 +18,7 @@ exports.seed = function (knex) {
     {
       name: "dish cheese",
       size_price: "23",
-      price: 2,
-      quantity: 1,
+
       description: "this is the best pizza",
       sauce: "tomate",
       dressing: "ranch",
@@ -34,8 +32,7 @@ exports.seed = function (knex) {
     {
       name: "hawaiian",
       size_price: "23",
-      price: 2,
-      quantity: 1,
+
       description: "this is the best pizza",
       sauce: "tomate",
       dressing: "ranch",
@@ -49,8 +46,7 @@ exports.seed = function (knex) {
     {
       name: "pizza",
       size_price: "23",
-      price: 2,
-      quantity: 1,
+
       description: "this is the best pizza",
       sauce: "tomate",
       dressing: "ranch",
@@ -64,8 +60,7 @@ exports.seed = function (knex) {
     {
       name: "pizza",
       size_price: "23",
-      price: 2,
-      quantity: 1,
+
       description: "this is the best pizza",
       sauce: "tomate",
       dressing: "ranch",
