@@ -19,7 +19,7 @@ async function getAll() {
   const sandwiches = await db("menu as m").where("m.category", "sandwiches");
   const desserts = await db("menu as m").where("m.category", "desserts");
   const drinks = await db("menu as m").where("m.category", "drinks");
-  const extras = await db("menu as m").where("m.category", "extras");
+  const extras = await db("menu as m").where("m.category", "extrass");
 
   return {
     pizzas: splitStr(pizzas),
