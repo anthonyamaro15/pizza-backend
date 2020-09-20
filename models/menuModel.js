@@ -30,7 +30,7 @@ async function getAll() {
     sandwiches: splitStr(sandwiches),
     desserts: splitStr(desserts),
     drinks: splitStr(drinks),
-    extras: splitStr(extras),
+    extrass: splitStr(extras),
   };
 }
 
