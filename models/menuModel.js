@@ -15,7 +15,10 @@ async function getAll() {
   const salads = await db("menu as m").where("m.category", "salads");
   const appetizers = await db("menu as m").where("m.category", "appetizers");
   const pastas = await db("menu as m").where("m.category", "pastas");
-  const combos = await db("menu as m").where("m.category", "combos");
+  const combos = await db("menu as m").where(
+    "m.category_name",
+    "popular_combos"
+  );
   const sandwiches = await db("menu as m").where("m.category", "sandwiches");
   const desserts = await db("menu as m").where("m.category", "desserts");
   const drinks = await db("menu as m").where("m.category", "drinks");
