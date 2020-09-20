@@ -2,7 +2,11 @@ exports.up = function (knex) {
   return knex.schema
     .createTable("clients", (table) => {
       table.increments();
+      table.string("first_name", 255).notNullable();
+      table.string("last_name", 255).notNullable();
       table.string("email", 255).unique().notNullable();
+      table.string("phone_number", 255).notNullable();
+      table.string("address", 255).notNullable();
       table.string("password", 255).notNullable();
       table.string("reset_link", 255);
     })
