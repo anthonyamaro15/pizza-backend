@@ -14,6 +14,12 @@ function getById(id) {
   return db("clients").where({ id }).first();
 }
 
+function getClientById(id) {
+  return db("clients as c")
+    .where({ id })
+    .select("c.id", "c.first_name", "c.last_name", "c.address");
+}
+
 // update client
 function update(id, changes) {
   return db("clients").where({ id }).update(changes);
@@ -28,6 +34,7 @@ module.exports = {
   add,
   getBy,
   getById,
+  getClientById,
   update,
   remove,
 };
