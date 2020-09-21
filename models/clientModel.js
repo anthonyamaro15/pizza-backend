@@ -17,7 +17,14 @@ function getById(id) {
 function getClientById(id) {
   return db("clients as c")
     .where({ id })
-    .select("c.id", "c.first_name", "c.last_name", "c.address");
+    .select(
+      "c.id",
+      "c.first_name",
+      "c.last_name",
+      "c.address",
+      "c.email",
+      "c.phone_number"
+    );
 }
 
 // update client
