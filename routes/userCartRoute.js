@@ -1,5 +1,6 @@
 const express = require("express");
 const Cart = require("../models/itemModel");
+const User = require("../models/clientModel");
 const { valClientId } = require("../middlewares/validations");
 
 const route = express.Router();
@@ -18,6 +19,18 @@ route.get("/items_in_cart/:id", valClientId, (req, res) => {
   Cart.getItemsInCart(id)
     .then((items) => res.status(200).json(items))
     .catch((err) => res.status(500).json({ errorMessage: err.message }));
+});
+
+// get user information
+route.get("/user/:id", (req, res) => {
+  const { id } = req.params;
+  User.getClientById(id)
+    .then((client) => {
+      res.status(200).json(client);
+    })
+    .catch((err) => {
+      res.status(500).json({ errorMessage: err.message });
+    });
 });
 
 route.delete("/remove/:id", (req, res) => {
