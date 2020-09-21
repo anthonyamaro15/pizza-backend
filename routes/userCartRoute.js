@@ -20,7 +20,7 @@ route.get("/items_in_cart/:id", valClientId, (req, res) => {
     .catch((err) => res.status(500).json({ errorMessage: err.message }));
 });
 
-route.delete("/remove/:id", valClientId, (req, res) => {
+route.delete("/remove/:id", (req, res) => {
   // client id
   const { id } = req.params;
 
