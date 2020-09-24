@@ -33,6 +33,19 @@ route.get("/user/:id", (req, res) => {
     });
 });
 
+route.patch("/update_item_in_cart/:user_id/:id", (req, res) => {
+  const { user_id, id } = req.params;
+  const changes = req.body;
+
+  Cart.update(user_id, id, changes)
+    .then(() => {
+      res.status(200).json({ message: "Successfully updated" });
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
+});
+
 route.delete("/remove/:id", (req, res) => {
   // client id
   const { id } = req.params;

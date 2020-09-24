@@ -20,8 +20,11 @@ function getById(id) {
 }
 
 // update items
-function update(id, changes) {
-  return db("items").where({ id }).update(changes);
+function update(user_id, id, changes) {
+  return db("items as i")
+    .where("i.user_id", user_id)
+    .where({ id })
+    .update(changes, "id");
 }
 
 // delete items
