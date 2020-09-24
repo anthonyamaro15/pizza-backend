@@ -9,7 +9,12 @@ function add(client) {
 async function getItemsInCart(id) {
   const items = await db("items").where("items.user_id", id);
 
-  return items;
+  return items.map((item) => {
+    return {
+      ...item,
+      price: item.price * item.quantity,
+    };
+  });
 }
 
 function getBy(filter) {
