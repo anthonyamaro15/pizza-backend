@@ -6,8 +6,15 @@ function add(client) {
 }
 
 // get items in cart
-function getItemsInCart(id) {
-  return db("items").where("items.user_id", id);
+async function getItemsInCart(id) {
+  const items = await db("items").where("items.user_id", id);
+
+  return items.map((item) => {
+    return {
+      ...item,
+      total_price: item.price * item.quantity,
+    };
+  });
 }
 
 function getBy(filter) {
