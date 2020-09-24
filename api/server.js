@@ -7,14 +7,14 @@ const menuRoutes = require("../routes/menuRoute");
 const clientRoutes = require("../routes/UserRoutes");
 const userCartRoutes = require("../routes/userCartRoute");
 
-const server = express();
+const app = express();
 
-server.use(express.json());
-server.use(cors());
-server.use(helmet());
+app.use(express.json());
+app.use(cors());
+app.use(helmet());
 
-server.use("/api", clientRoutes);
-server.use("/api/menu", menuRoutes);
-server.use("/api/cart", userCartRoutes);
+app.use("/api", clientRoutes);
+app.use("/api/menu", menuRoutes);
+app.use("/api/cart", userCartRoutes);
 
-module.exports = server;
+module.exports = app;
