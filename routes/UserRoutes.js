@@ -39,7 +39,7 @@ route.post("/login", valClientBody, (req, res) => {
       if (client && bcrypt.compareSync(password, client.password)) {
         // if password matches then create token
         const token = generateToken(client);
-        res.status(200).json({ id: client.id, token });
+        res.status(200).json({ id: client.id, user: client.email, token });
       } else {
         res.status(401).json({ errorMessage: "Invalid email or password" });
       }
