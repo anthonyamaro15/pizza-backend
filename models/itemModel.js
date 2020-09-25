@@ -17,6 +17,17 @@ async function getItemsInCart(id) {
   });
 }
 
+// generate random salad and appetizer for every client.
+async function generateMeal() {
+  const salad = await db("menu as m").where("m.category", "salads");
+  const appetizer = await db("menu as m").where("m.category", "appetizers");
+  const dessert = await db("menu as m").where("m.category", "desserts");
+
+  let randomSalad = randomNumber(salad);
+  let randomAppetizer = randomNumber(appetizer);
+  return [randomSalad, randomAppetizer, dessert[0]];
+}
+
 function getBy(filter) {
   return db("items").where(filter);
 }
@@ -39,6 +50,11 @@ function remove(id) {
   return db("items").where({ id }).del();
 }
 
+function randomNumber(arr) {
+  let random = Math.floor(Math.random() * arr.length);
+  return arr[random];
+}
+
 module.exports = {
   add,
   getItemsInCart,
@@ -46,4 +62,5 @@ module.exports = {
   getById,
   update,
   remove,
+  generateMeal,
 };

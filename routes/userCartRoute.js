@@ -5,6 +5,15 @@ const { valClientId } = require("../middlewares/validations");
 
 const route = express.Router();
 
+// Route to send random meals suggestions
+route.get("/complete_meal", (req, res) => {
+  Cart.generateMeal()
+    .then((meals) => {
+      res.status(200).json(meals);
+    })
+    .catch((err) => res.status(500).json({ errorMessage: err.message }));
+});
+
 route.post("/add", (req, res) => {
   const cartItems = req.body;
 
