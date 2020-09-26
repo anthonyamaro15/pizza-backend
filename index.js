@@ -11,21 +11,13 @@ const PORT = process.env.PORT || 4200;
 io.on("connection", (socket) => {
   console.log("a new user just connected");
 
-  socket.on("createMessage", (message) => {
-    io.emit("newMessage", {
-      from: message.from,
-      text: message.text,
-      createdAt: new Date().getTime(),
-    });
-  });
-
   socket.on("order", (order) => {
+    console.log("we got the order ", order);
     io.emit("send-order", order);
   });
 
   socket.on("order-status", (order) => {
-    console.log("what is the order ", order);
-    io.emit("send-status", order);
+    socket.broadcast.emit("send-status", order);
   });
 
   socket.on("disconnect", () => {
