@@ -47,6 +47,14 @@ route.post("/login", valClientBody, (req, res) => {
     .catch((err) => res.status(500).json({ errorMessage: err.message }));
 });
 
+route.delete("/delete_acc/:id", (req, res) => {
+  const { id } = req.params;
+
+  Clients.remove(id)
+    .then(() => res.status(200).json({ message: "removed successfully" }))
+    .catch((err) => res.status(500).json({ errorMessage: err.message }));
+});
+
 function generateToken(user) {
   const payload = {
     user: user.email,

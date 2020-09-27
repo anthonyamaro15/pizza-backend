@@ -6,14 +6,16 @@ const sockeIo = require("socket.io");
 const server = http.createServer(app);
 const io = sockeIo(server);
 
-const PORT = process.env.PORT || 4200;
+const PORT = process.env.PORT || 4100;
+
+let orderList = {};
 
 io.on("connection", (socket) => {
   console.log("a new user just connected");
 
   socket.on("order", (order) => {
-    console.log("we got the order ", order);
-    io.emit("send-order", order);
+    orderList[socket.id] = order;
+    io.emit("send-order", { order: orderList[socket.id] });
   });
 
   socket.on("order-status", (order) => {
