@@ -14,6 +14,7 @@ route.get("/complete_meal", (req, res) => {
     .catch((err) => res.status(500).json({ errorMessage: err.message }));
 });
 
+// add items to user cart
 route.post("/add", (req, res) => {
   const cartItems = req.body;
 
@@ -22,6 +23,7 @@ route.post("/add", (req, res) => {
     .catch((err) => res.status(500).json({ errorMessage: err.message }));
 });
 
+// get items from user cart
 route.get("/items_in_cart/:id", valClientId, (req, res) => {
   // client id
   const { id } = req.params;
@@ -55,12 +57,22 @@ route.patch("/update_item_in_cart/:user_id/:id", (req, res) => {
     });
 });
 
-route.delete("/remove/:id", (req, res) => {
-  // client id
-  const { id } = req.params;
+route.delete("/remove/:item_id", (req, res) => {
+  // item_id id
+  const { item_id } = req.params;
 
-  Cart.remove(id)
+  Cart.remove(item_id)
     .then(() => res.status(200).json({ message: "successfully removed" }))
+    .catch((err) => res.status(500).json({ errorMessage: err.message }));
+});
+
+route.delete("/remove_cart_items/:user_id", (req, res) => {
+  const { user_id } = req.params;
+
+  Cart.removeFromCart(user_id)
+    .then(() =>
+      res.status(200).json({ message: "successfully removed items from cart" })
+    )
     .catch((err) => res.status(500).json({ errorMessage: err.message }));
 });
 

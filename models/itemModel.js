@@ -45,9 +45,14 @@ function update(user_id, id, changes) {
     .update(changes, "id");
 }
 
-// delete items
+// delete item by id
 function remove(id) {
   return db("items").where({ id }).del();
+}
+
+// delete items from user cart
+function removeFromCart(user_id) {
+  return db("items as i").where("i.user_id", user_id).del();
 }
 
 function randomNumber(arr) {
@@ -62,5 +67,6 @@ module.exports = {
   getById,
   update,
   remove,
+  removeFromCart,
   generateMeal,
 };
