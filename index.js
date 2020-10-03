@@ -8,14 +8,15 @@ const io = sockeIo(server);
 
 const PORT = process.env.PORT || 4100;
 
-let orderList = {};
+// let orderList = {};
+const orderList = [];
 
 io.on("connection", (socket) => {
   console.log("a new user just connected");
 
   socket.on("order", (order) => {
-    orderList[socket.id] = order;
-    io.emit("send-order", { order: orderList[socket.id] });
+    let newValues = [...orderList, order];
+    io.emit("send-order", newValues);
   });
 
   socket.on("order-status", (order) => {
